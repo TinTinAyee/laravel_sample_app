@@ -21,7 +21,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="name"
-                                        autocomplete="name" autofocus placeholder="Enter your user name">
+                                        autocomplete="name" autofocus placeholder="Enter your user name"
+                                        value="<?php echo e(old('name')); ?>">
 
                                     <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -82,7 +83,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="password"
-                                        autocomplete="new-password" placeholder="Enter your password">
+                                        autocomplete="new-password" placeholder="Enter your password"
+                                        value="<?php echo e(old('password')); ?>">
 
                                     <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -106,7 +108,8 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" autocomplete="new-password"
-                                        placeholder="Enter your confirm password">
+                                        placeholder="Enter your confirm password"
+                                        value="<?php echo e(old('password_confirmation')); ?>">
 
                                     <?php $__errorArgs = ['password_confirmation'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

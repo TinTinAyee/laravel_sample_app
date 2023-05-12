@@ -48,19 +48,18 @@
                                                 <td><?php echo e($user->name); ?></td>
                                                 <td><?php echo e($user->email); ?></td>
                                                 <td>
-                                                    <?php if(!empty($user->getRoleNames())): ?>
-                                                        <?php $__currentLoopData = $user->getRoleNames(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <label class="badge badge-success"><?php echo e($role); ?></label>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    <?php endif; ?>
+                                                    
                                                 </td>
 
                                                 <td>
-                                                    <a href="<?php echo e(route('adminList.edit', $user->id)); ?>" class="btn btn-primary">Edit</a>
+                                                    <a href="<?php echo e(route('adminList.edit', $user->id)); ?>"
+                                                        class="btn btn-primary">Edit</a>
 
-                                                    <a href="<?php echo e(route('adminList.show', $user->id)); ?>" class="btn btn-success">View</a>
+                                                    <a href="<?php echo e(route('adminList.show', $user->id)); ?>"
+                                                        class="btn btn-success">View</a>
 
-                                                    <form action="<?php echo e(route('adminList.destroy', $user->id)); ?>" method="POST" class="d-inline">
+                                                    <form action="<?php echo e(route('adminList.destroy', $user->id)); ?>"
+                                                        method="POST" class="d-inline">
                                                         <?php echo csrf_field(); ?>
                                                         <?php echo method_field('DELETE'); ?>
                                                         <button class="btn btn-danger"

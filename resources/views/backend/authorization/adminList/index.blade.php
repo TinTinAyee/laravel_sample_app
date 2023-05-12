@@ -49,19 +49,22 @@
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>
-                                                    @if (!empty($user->getRoleNames()))
+                                                    {{-- @if (!empty($user->getRoleNames()))
                                                         @foreach ($user->getRoleNames() as $role)
                                                             <label class="badge badge-success">{{ $role }}</label>
                                                         @endforeach
-                                                    @endif
+                                                    @endif --}}
                                                 </td>
 
                                                 <td>
-                                                    <a href="{{ route('adminList.edit', $user->id) }}" class="btn btn-primary">Edit</a>
+                                                    <a href="{{ route('adminList.edit', $user->id) }}"
+                                                        class="btn btn-primary">Edit</a>
 
-                                                    <a href="{{ route('adminList.show', $user->id) }}" class="btn btn-success">View</a>
+                                                    <a href="{{ route('adminList.show', $user->id) }}"
+                                                        class="btn btn-success">View</a>
 
-                                                    <form action="{{ route('adminList.destroy', $user->id) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('adminList.destroy', $user->id) }}"
+                                                        method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger"

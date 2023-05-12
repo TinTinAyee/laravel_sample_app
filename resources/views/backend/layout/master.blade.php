@@ -276,7 +276,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                        @can('dasboard')
+                        {{-- @can('dasboard') --}}
                             <li class="nav-item menu-open">
                                 <a href={{ route('admin') }} class="nav-link active">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -286,7 +286,7 @@
                                     </p>
                                 </a>
                             </li>
-                        @endcan
+                        {{-- @endcan --}}
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -315,7 +315,7 @@
                             </ul>
                         </li>
 
-                        @can('widget')
+                        {{-- @can('widget') --}}
                             <li class="nav-item">
                                 <a href={{ route('admin.widget') }} class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
@@ -325,9 +325,9 @@
                                     </p>
                                 </a>
                             </li>
-                        @endcan
+                        {{-- @endcan --}}
 
-                        @can('blogList')
+                        {{-- @can('blogList') --}}
                             <li class="nav-item">
                                 <a href="{{ route('blog.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
@@ -337,7 +337,7 @@
                                     </p>
                                 </a>
                             </li>
-                        @endcan
+                        {{-- @endcan --}}
 
                         <li class="nav-item">
                             <a href="{{ route('post.index') }}" class="nav-link">

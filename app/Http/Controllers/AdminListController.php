@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\RedirectResponse as HttpFoundationRedirectResponse;
 
 class AdminListController extends Controller
@@ -42,45 +46,45 @@ class AdminListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(UserRequest $request)
     {
-
         // first way to create user...
 
-        $userValid = $request->validated();
+        // $userValid = $request->validated();
 
-        $userValid['password'] = Hash::make($userValid['password']);
+        // $userValid['password'] = Hash::make($userValid['password']);
 
-        $user = User::create($userValid);
+        // $user = User::create($userValid);
 
-        $user->assignRole($userValid['roles']);
+        // $user->assignRole($userValid['roles']);
 
-        return redirect()->route('adminList.index');
-
+        // return redirect()->route('adminList.index');
 
         // second way to create user...
 
-        // $userValid = $request->validate( [
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:users,email',
-        //     'password' => 'required|confirmed|min:6',
-        //     'password_confirmation'=>'required',
-        //     'roles' => 'required'
-        // ]);
+        $data = $request->validated();
 
-        // $validPass = Hash::make($userValid['password']);
+        try {
+            DB::transaction(function() use($data){
+                $result = array_merge($data,['type'=>'dashboard',
+                        'password'=>Hash::make('12345678'),'is_block'=>1]
+                );
 
-        // $user = User::create([
-        //     'name'=>$request->name,
-        //     'email'=>$request->email,
-        //     'password'=>$validPass,
-        // ]);
+                $user = User::create($result);
+                $user->assignRole($data['roles']);
+                return $user;
+            });
 
-        // $role = Role::where('id',$request->input('roles'))->get();
 
-        // $user->assignRole($role);
+        } catch (Exception $e) {
+            Log::channel('web_daily_error')->error("Admin Create",[$e->getMessage()]);
+            //throw new Exception($e->getMessage(),500);
+            return Redirect::back()->withErrors($e->getMessage());
+        }
 
-        // return redirect()->route('adminList.index');
+        return redirect()->route('adminList.index');
 
     }
 

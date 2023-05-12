@@ -240,7 +240,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dasboard')): ?>
+                        
                             <li class="nav-item menu-open">
                                 <a href=<?php echo e(route('admin')); ?> class="nav-link active">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -250,7 +250,7 @@
                                     </p>
                                 </a>
                             </li>
-                        <?php endif; ?>
+                        
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -279,7 +279,7 @@
                             </ul>
                         </li>
 
-                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('widget')): ?>
+                        
                             <li class="nav-item">
                                 <a href=<?php echo e(route('admin.widget')); ?> class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
@@ -289,9 +289,9 @@
                                     </p>
                                 </a>
                             </li>
-                        <?php endif; ?>
+                        
 
-                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('blogList')): ?>
+                        
                             <li class="nav-item">
                                 <a href="<?php echo e(route('blog.index')); ?>" class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
@@ -301,7 +301,7 @@
                                     </p>
                                 </a>
                             </li>
-                        <?php endif; ?>
+                        
 
                         <li class="nav-item">
                             <a href="<?php echo e(route('post.index')); ?>" class="nav-link">

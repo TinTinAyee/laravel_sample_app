@@ -28,6 +28,7 @@ class RepositoryServiceProvice extends ServiceProvider
     public function boot()
     {
         $this->app->bind(BlogRepoInterface::class,BlogRepository::class);
+        
         $this->app->bind(BlogServiceInterface::class,BlogService::class);
     }
 }

@@ -83,7 +83,7 @@ trait AuthenticatesUsers
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
+        return $this->guard('web')->attempt(
             $this->credentials($request), $request->boolean('remember')
         );
     }

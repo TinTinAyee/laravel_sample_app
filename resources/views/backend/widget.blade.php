@@ -1,9 +1,9 @@
 @extends('backend.layout.master')
 @section('content')
-
     <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+
+    {{-- <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -17,10 +17,11 @@
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </section>
+    </section> --}}
 
     <!-- Main content -->
-    <section class="content">
+
+    {{-- <section class="content">
         <div class="container-fluid">
             <h5 class="mb-2">Info Box</h5>
             <div class="row">
@@ -2385,13 +2386,54 @@
             </div>
         </div>
         <!-- /.container-fluid -->
-    </section>
+    </section> --}}
+
     <!-- /.content -->
 
-    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button"
+    {{-- <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button"
         aria-label="Scroll to top">
         <i class="fas fa-chevron-up"></i>
-    </a>
+    </a> --}}
+
+    <div class="container">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header d-flex">
+                                <h4>Data fetch Api</h4>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>API</th>
+                                            <th>Description</th>
+                                            <th>Auth</th>
+                                            <th>Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($response as $res)
+                                            <tr>
+                                                <td>{{ $res->API }}</td>
+                                                <td>{{ $res->Description }}</td>
+                                                <td>{{ $res->Auth }}</td>
+                                                <td>{{ $res->Category }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- /.content-wrapper -->
 @endsection
